@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.kontur.obb.web.LoginTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-15T18:48:13" hostname="SPB-5CD810B9KL" time="1.842">
+  <properties/>
+  <testcase name="testLoginTests" classname="ru.kontur.obb.web.LoginTests" time="1.842"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
