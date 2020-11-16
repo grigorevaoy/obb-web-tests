@@ -16,13 +16,17 @@ public class LoginTests {
 
   @Test
   public void testLogin() throws Exception {
+    login("111", "111");
+  }
+
+  private void login(String username, String password) {
     wd.get("http://localhost:8080/Interface/");
     wd.findElement(By.xpath("//div[@id='root']/div/div/div/div/div/div[2]/div[2]/div")).click();
     wd.findElement(By.xpath("//input[@value='']")).clear();
-    wd.findElement(By.xpath("//input[@value='']")).sendKeys("111");
+    wd.findElement(By.xpath("//input[@value='']")).sendKeys(username);
     wd.findElement(By.xpath("(//input[@value=''])[2]")).click();
     wd.findElement(By.xpath("(//input[@value=''])[2]")).clear();
-    wd.findElement(By.xpath("(//input[@value=''])[2]")).sendKeys("111");
+    wd.findElement(By.xpath("(//input[@value=''])[2]")).sendKeys(password);
     wd.findElement(By.xpath("//button/div")).click();
   }
 
