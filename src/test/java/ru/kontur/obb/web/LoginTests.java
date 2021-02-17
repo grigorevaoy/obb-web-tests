@@ -1,6 +1,9 @@
 package ru.kontur.obb.web;
 
 import java.util.concurrent.TimeUnit;
+
+import jdk.nashorn.internal.AssertsEnabled;
+import org.testng.Assert;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -19,16 +22,18 @@ public class LoginTests {
     login("111", "111");
   }
 
-  private void login(String username, String password) {
+  public void login(String username, String password) {
     wd.get("http://localhost:8080/Interface/");
-    wd.findElement(By.xpath("//div[@id='root']/div/div/div/div/div/div[2]/div[2]/div")).click();
+    wd.findElement(By.xpath("//div[2]/div[2]")).click();
     wd.findElement(By.xpath("//input[@value='']")).clear();
     wd.findElement(By.xpath("//input[@value='']")).sendKeys(username);
     wd.findElement(By.xpath("(//input[@value=''])[2]")).click();
     wd.findElement(By.xpath("(//input[@value=''])[2]")).clear();
     wd.findElement(By.xpath("(//input[@value=''])[2]")).sendKeys(password);
     wd.findElement(By.xpath("//button/div")).click();
+    Assert.assertNotNull(wd.findElement(By.xpath("//span[2]/span/button/div")));
   }
+
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
