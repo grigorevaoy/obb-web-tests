@@ -19,8 +19,8 @@ public class SessionHelper extends HelperBase{
   public void login(String username, String password) throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-    wd.get(properties.getProperty("web.baseUrl"));
 
+    //надо добавить timeout, так как тест падает, не находя этот локатор
     wd.findElement(By.xpath("//div[2]/div[2]")).click();
     wd.findElement(By.xpath("//input[@value='']")).clear();
     wd.findElement(By.xpath("//input[@value='']")).sendKeys(username);
