@@ -1,4 +1,4 @@
-package ru.kontur.obb.web;
+package ru.kontur.obb.web.tests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
