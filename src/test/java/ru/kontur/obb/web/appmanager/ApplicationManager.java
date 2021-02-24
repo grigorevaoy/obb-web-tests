@@ -19,6 +19,7 @@ public class ApplicationManager{
 
   private final Properties properties;
   WebDriver wd;
+  private  NavigationHelper navigationHelper;
   private SessionHelper sessionHelper;
   private String browser;
 
@@ -39,6 +40,7 @@ public class ApplicationManager{
       }
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     wd.get(properties.getProperty("web.baseUrl"));
+    navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
     sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
   }

@@ -1,12 +1,14 @@
 package ru.kontur.obb.web.appmanager;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class SessionHelper extends HelperBase{
   private final Properties properties;
@@ -20,7 +22,8 @@ public class SessionHelper extends HelperBase{
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
-    //надо добавить timeout, так как тест падает, не находя этот локатор
+    //добавляем таймаут, так как кнопка "Войти" долго прорисовывается
+    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.findElement(By.xpath("//div[2]/div[2]")).click();
     wd.findElement(By.xpath("//input[@value='']")).clear();
     wd.findElement(By.xpath("//input[@value='']")).sendKeys(username);

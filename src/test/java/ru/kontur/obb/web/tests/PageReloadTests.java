@@ -29,6 +29,7 @@ public class PageReloadTests {
 
   public void login(String username, String password) {
     wd.get("http://localhost:8080/Interface/");
+    wd.navigate().refresh(); //перезагрузка
     wd.findElement(By.xpath("//div[2]/div[2]")).click();
     wd.findElement(By.xpath("//input[@value='']")).clear();
     wd.findElement(By.xpath("//input[@value='']")).sendKeys(username);
