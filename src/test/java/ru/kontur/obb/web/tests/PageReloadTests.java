@@ -18,7 +18,7 @@ public class PageReloadTests {
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
-  @Test
+  @Test(enabled = false)
   public void testLogin() throws Exception {
     login("111", "111");
     wd.get("http://localhost:8080/Interface/#/app/app.TAP:1.1.146/values/constants/list");

@@ -9,9 +9,12 @@ public class NavigationHelper extends HelperBase {
     super(wd);
   }
 
-  // написать функцию, которая возращает true, если элемент с ошибкой авторизации есть на странице
-  public boolean returnMessageLoginError() {
-    boolean returnvalue = true;
+  // метод возвращает true, если на странице появляется сообщение о некорректной авторизации
+  public boolean authorizationFailed() {
+    boolean returnvalue = false;
+    if (wd.findElement(By.cssSelector("div.status-message")).getText() == "Некорректный логин или пароль"){
+      returnvalue = true;
+    }
     return returnvalue;
   }
 
