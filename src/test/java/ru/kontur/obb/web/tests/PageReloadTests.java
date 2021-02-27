@@ -7,40 +7,20 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Properties;
 
-public class PageReloadTests {
+public class PageReloadTests extends TestBase{
   private WebDriver wd;
 
-  @BeforeMethod(alwaysRun = true)
-  public void setUp() throws Exception {
-    wd = new FirefoxDriver();
-    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-  }
-
   @Test(enabled = false)
-  public void testLogin() throws Exception {
-    login("111", "111");
+  public void PageReloadTests() {
+    //непонятно, как организовать файл с url, где его держать и читать (ApplicationManager)
+    app.goTo().page("тут будет url"); //переход на заданную страницу
+    app.goTo().page("тут будет url").reload(); //обновление страницы
     wd.get("http://localhost:8080/Interface/#/app/app.TAP:1.1.146/values/constants/list");
-    //wd.findElement(By.linkText("Документы")).click();
-   // goToPage();
-   // reloadPage();
-  }
 
-  public void login(String username, String password) {
-    wd.get("http://localhost:8080/Interface/");
-    wd.navigate().refresh(); //перезагрузка
-    wd.findElement(By.xpath("//div[2]/div[2]")).click();
-    wd.findElement(By.xpath("//input[@value='']")).clear();
-    wd.findElement(By.xpath("//input[@value='']")).sendKeys(username);
-    wd.findElement(By.xpath("(//input[@value=''])[2]")).click();
-    wd.findElement(By.xpath("(//input[@value=''])[2]")).clear();
-    wd.findElement(By.xpath("(//input[@value=''])[2]")).sendKeys(password);
-    wd.findElement(By.xpath("//button[@type='button']")).click();
-
-    wd.findElement(By.xpath("//span/span/span")).click();
-    wd.findElement(By.xpath("//div[3]/div/div/div/div/button")).click();
-    wd.findElement(By.xpath("//span[2]/span/button/div")).click();
   }
 
   @AfterMethod(alwaysRun = true)

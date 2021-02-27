@@ -18,5 +18,11 @@ public class NavigationHelper extends HelperBase {
     return returnvalue;
   }
 
+  public void page(String url){
+    wd.get(url);
+  }
+
+
+
 }
 

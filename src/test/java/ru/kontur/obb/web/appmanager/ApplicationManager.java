@@ -53,6 +53,7 @@ public class ApplicationManager{
     return navigationHelper;
   }
 
+
   private boolean isElementPresent(By by) {
     try {
       wd.findElement(by);
